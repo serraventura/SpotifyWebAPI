@@ -1,0 +1,8 @@
+<div>
+
+    <input type="search" ng-keyup="triggerSearch($event);" ng-model="searchTerm"/>
+    <ul ng-repeat="item in searchResult track by $index">
+        <li>{{item.name}}</li>
+    </ul>
+
+</div>

@@ -3,26 +3,22 @@ module.exports = function(app) {
     meService.$inject = [
         '$q',
         '$http',
-        'ParamsService',
-        'Settings'
+        'statusService'
     ];
 
-    function meService($q, $http, ParamsService, Settings) {
+    function meService($q, $http, statusService) {
 
         var meService = {};
 
         meService.getTopTracksByArtist = function() {
 
             var d = $q.defer();
-            var URL = 'https://api.spotify.com/v1/artists/6mdiAmATAx73kdxrNrnlao/top-tracks?country=GB';
+            var URL = 'https://api.spotify.com/v1/artists/'+statusService.qs.artistId+'/top-tracks?country=GB';
 
             $http({
                 method: 'get',
                 url: URL,
-                param: ParamsService.qs,
-                headers: {
-                    'X-KSYS-TOKEN': Settings.apiToken
-                }
+                //param: statusService.qs
             }).success(function(res) {
                 return d.resolve(res);
             }).error(function(err) {
@@ -36,15 +32,12 @@ module.exports = function(app) {
         meService.getAllAlbumsByArtist = function() {
 
             var d = $q.defer();
-            var URL = 'https://api.spotify.com/v1/artists/6mdiAmATAx73kdxrNrnlao/albums?album_type=album&limit=50';
+            var URL = 'https://api.spotify.com/v1/artists/'+statusService.qs.artistId+'/albums?album_type=album&limit=50';
 
             $http({
                 method: 'get',
                 url: URL,
-                param: ParamsService.qs,
-                headers: {
-                    'X-KSYS-TOKEN': Settings.apiToken
-                }
+                //param: statusService.qs
             }).success(function(res) {
                 return d.resolve(res);
             }).error(function(err) {

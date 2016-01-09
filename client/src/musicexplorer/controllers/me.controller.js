@@ -2,12 +2,12 @@ module.exports = function(app) {
 
     meCtrl.$inject = [
         '$scope',
-        'ParamsService',
+        'statusService',
         'Settings',
         'meService'
     ];
 
-    function meCtrl($scope, ParamsService, Settings, meService) {
+    function meCtrl($scope, statusService, Settings, meService) {
 
         $scope.selectedTab = Settings.defaultTab;
 
@@ -56,7 +56,7 @@ module.exports = function(app) {
         }
 
         $scope.$watch(function () {
-            return ParamsService.qs;
+            return statusService.qs;
         }, function (newVal, oldVal) {
             if (JSON.stringify(newVal) !== JSON.stringify(oldVal)) {
                 loadMusicExplorerData();
