@@ -2,10 +2,6 @@ import template from './../views/search.html';
 
 module.exports = function(app){
 
-    //search.$inject = [
-    //    'searchService'
-    //];
-
     _controller.$inject = [
         '$scope',
         'searchService',
@@ -42,9 +38,15 @@ module.exports = function(app){
 
             } else if (e.keyCode === 13 && $scope.searchTerm.length > 3 && $scope.searchResult) {
                 statusService.qs.artistId = _.first($scope.searchResult).id;
+                $scope.searchResult = undefined;
             }
 
         };
+
+        $scope.triggerArtist = function (id) {
+            statusService.qs.artistId = id;
+            $scope.searchResult = undefined;
+        }
 
     }
 

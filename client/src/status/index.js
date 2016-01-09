@@ -6,6 +6,8 @@ module.exports = function(app){
 
         var statusService = {};
 
+        statusService.loading = false;
+
         statusService.qs = {
             artistId: Settings.defaultArtist,
             country: Settings.defaultCountry

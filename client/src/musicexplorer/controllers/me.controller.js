@@ -13,7 +13,11 @@ module.exports = function(app) {
 
         function loadMusicExplorerData() {
 
+            statusService.loading = true;
+
             meService.getTopTracksByArtist().then(function (res) {
+
+                statusService.loading = false;
 
                 if (res) {
 
@@ -24,6 +28,8 @@ module.exports = function(app) {
 
                 }
 
+            }, function (err) {
+                statusService.loading = false;
             });
 
             meService.getAllAlbumsByArtist().then(function (res) {
@@ -49,11 +55,15 @@ module.exports = function(app) {
                 return _.get(_.filter(arr, {width: resolution}), ['0', 'url'], small);
             }
 
-        }
+        };
 
         $scope.activeTab = function (tab) {
             $scope.selectedTab = tab;
-        }
+        };
+
+        $scope.isLoading = function () {
+            return statusService.loading;
+        };
 
         $scope.$watch(function () {
             return statusService.qs;

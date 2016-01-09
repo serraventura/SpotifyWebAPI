@@ -2,7 +2,7 @@
 
     <input type="search" ng-keyup="triggerSearch($event);" ng-model="searchTerm"/>
     <ul ng-repeat="item in searchResult track by $index">
-        <li>{{item.name}}</li>
+        <li><a href="javascript:void(0);" ng-click="triggerArtist(item.id)">{{item.name}}</a></li>
     </ul>
 
 </div>
