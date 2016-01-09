@@ -2,6 +2,11 @@ import template from './sp.html';
 
 module.exports = function(app){
 
+    _controller.$inject = [
+        '$scope',
+        '$sce'
+    ];
+
     function songPlayer(){
 
         return{
@@ -9,6 +14,7 @@ module.exports = function(app){
             replace: true,
             template: template,
             restrict: 'EA',
+            controller: _controller,
             scope: {
                 trackName: '@trackName',
                 trackStreaming: '@trackStreaming',
@@ -21,6 +27,14 @@ module.exports = function(app){
             }
 
         }
+
+    }
+
+    function _controller ($scope, $sce) {
+
+        $scope.trustAsResourceUrl = function (resource) {
+            return $sce.trustAsResourceUrl(resource);
+        };
 
     }
 

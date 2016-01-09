@@ -4,10 +4,11 @@ module.exports = function(app) {
         '$scope',
         'statusService',
         'Settings',
-        'meService'
+        'meService',
+        '$sce'
     ];
 
-    function meCtrl($scope, statusService, Settings, meService) {
+    function meCtrl($scope, statusService, Settings, meService, $sce) {
 
         $scope.selectedTab = Settings.defaultTab;
 

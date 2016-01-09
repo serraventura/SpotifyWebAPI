@@ -7,7 +7,7 @@
         <li><img ng-src="{{albumImage}}" /></li>
         <li>
             <audio controls>
-                <source src="{{trackStreaming}}" type="audio/mpeg">
+                <source ng-src="{{trustAsResourceUrl(trackStreaming)}}" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
         </li>

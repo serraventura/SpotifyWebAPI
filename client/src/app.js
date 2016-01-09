@@ -1,4 +1,5 @@
 import angular from 'angular';
+import ngSanitize from 'angular-sanitize';
 import _ from 'lodash';
 import moment from 'expose?moment!moment';
 
@@ -11,7 +12,7 @@ import songPlayer from './songplayer';
 import search from './search';
 import filters from './filters';
 
-const app = angular.module('app', []);
+const app = angular.module('app', [ngSanitize]);
 
 settings(app);
 status(app);
