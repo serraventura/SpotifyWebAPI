@@ -4,11 +4,10 @@ module.exports = function(app) {
         '$scope',
         'statusService',
         'Settings',
-        'meService',
-        '$sce'
+        'meService'
     ];
 
-    function meCtrl($scope, statusService, Settings, meService, $sce) {
+    function meCtrl($scope, statusService, Settings, meService) {
 
         $scope.selectedTab = Settings.defaultTab;
 
@@ -16,32 +15,39 @@ module.exports = function(app) {
 
             statusService.loading = true;
 
-            meService.getTopTracksByArtist().then(function (res) {
+            meService.getData().then(function (res) {
 
                 statusService.loading = false;
 
-                if (res) {
+                if (res.topTracks.tracks.length > 0) {
 
                     console.log(res);
-                    $scope.topTracksList = res.tracks;
-                    $scope.artistName = _.first(_.first(res.tracks).artists).name;
+                    $scope.topTracksList = res.topTracks.tracks;
+                    $scope.artistName = _.first(_.first($scope.topTracksList).artists).name;
                     $scope.relatedAlbums = _.uniq(_.map($scope.topTracksList, 'album'), 'name');
 
+                } else {
+                    $scope.topTracksList = [];
+                    $scope.artistName = [];
+                    $scope.relatedAlbums = [];
+                }
+
+                if (res.albums.items.length > 0) {
+
+                    $scope.allAlbumsList = _.uniq(res.albums.items, function (item) {
+                        return (item.name||'').toLowerCase()
+                    });
+
+                } else {
+                    $scope.allAlbumsList = [];
                 }
 
             }, function (err) {
                 statusService.loading = false;
-            });
-
-            meService.getAllAlbumsByArtist().then(function (res) {
-
-                if (res) {
-
-                    $scope.allAlbumsList = _.uniq(res.items, function (item) {
-                        return (item.name||'').toLowerCase()
-                    });
-
-                }
+                $scope.topTracksList = undefined;
+                $scope.artistName = undefined;
+                $scope.relatedAlbums = undefined;
+                $scope.allAlbumsList = undefined;
 
             });
 

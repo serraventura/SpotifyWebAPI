@@ -10,34 +10,15 @@ module.exports = function(app) {
 
         var meService = {};
 
-        meService.getTopTracksByArtist = function() {
+        meService.getData = function() {
 
             var d = $q.defer();
-            var URL = 'https://api.spotify.com/v1/artists/'+statusService.qs.artistId+'/top-tracks?country=GB';
+            var URL = 'http://localhost:9000/musicexplorer/get';
 
             $http({
                 method: 'get',
                 url: URL,
-                //param: statusService.qs
-            }).success(function(res) {
-                return d.resolve(res);
-            }).error(function(err) {
-                return d.reject(err);
-            });
-
-            return d.promise;
-
-        };
-
-        meService.getAllAlbumsByArtist = function() {
-
-            var d = $q.defer();
-            var URL = 'https://api.spotify.com/v1/artists/'+statusService.qs.artistId+'/albums?album_type=album&limit=50';
-
-            $http({
-                method: 'get',
-                url: URL,
-                //param: statusService.qs
+                params: statusService.qs
             }).success(function(res) {
                 return d.resolve(res);
             }).error(function(err) {

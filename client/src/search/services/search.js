@@ -2,23 +2,21 @@ module.exports = function(app) {
 
     searchService.$inject = [
         '$q',
-        '$http',
-        'statusService'
+        '$http'
     ];
 
-    function searchService($q, $http, statusService) {
+    function searchService($q, $http) {
 
         var searchService = {};
 
         searchService.search = function(searchTerm) {
 
             var d = $q.defer();
-            var URL = 'https://api.spotify.com/v1/search?q='+searchTerm+'&type=artist';
+            var URL = 'http://localhost:9000/musicexplorer/search?searchTerm='+searchTerm;
 
             $http({
                 method: 'get',
-                url: URL,
-                //param: statusService.qs
+                url: URL
             }).success(function(res) {
                 return d.resolve(res);
             }).error(function(err) {
