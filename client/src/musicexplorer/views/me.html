@@ -1,0 +1,51 @@
+<div>
+
+    <h1>Music Explorer</h1>
+
+    <div>
+        <h3>Search: </h3>
+
+    </div>
+
+    <ul>
+        <li><a href="javascript:void(0);" ng-click="activeTab('top-tracks');">Top Tracks</a></li>
+        <li><a href="javascript:void(0);" ng-click="activeTab('cover-art');">Top Track's Cover Art</a></li>
+        <li><a href="javascript:void(0);" ng-click="activeTab('all-albums');">All Albums</a></li>
+    </ul>
+
+    <div ng-if="selectedTab === 'top-tracks'">
+
+        <h3>{{artistName}}'s Top Tracks</h3>
+        <ul>
+            <li ng-repeat="track in topTracksList track by $index">
+                <song-player
+                    track-name="{{track.name}}"
+                    track-streaming="{{track.preview_url}}"
+                    track-duration="{{track.duration_ms}}"
+                    album-name="{{track.album.name}}"
+                    album-image="{{getAlbumImage(track.album.images)}}"
+                ></song-player>
+            </li>
+        </ul>
+
+    </div>
+
+    <div ng-if="selectedTab === 'cover-art'">
+        <h3>Top Tracks Albums's Cover Art</h3>
+        <ul>
+            <li ng-repeat="album in relatedAlbums track by $index">
+                <img ng-src="{{getAlbumImage(album.images, 640)}}" />
+            </li>
+        </ul>
+    </div>
+
+    <div ng-if="selectedTab === 'all-albums'">
+        <h3>All Albums</h3>
+        <ul>
+            <li ng-repeat="item in allAlbumsList track by $index">
+                <img ng-src="{{getAlbumImage(item.images, 300)}}" />
+            </li>
+        </ul>
+    </div>
+
+</div>

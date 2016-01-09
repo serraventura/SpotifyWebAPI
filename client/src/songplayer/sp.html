@@ -1,0 +1,16 @@
+<div>
+
+    <ul>
+        <li>{{trackName}}</li>
+        <li>Duration: {{trackDuration | humanizeTime}}</li>
+        <li>{{albumName}}</li>
+        <li><img ng-src="{{albumImage}}" /></li>
+        <li>
+            <audio controls>
+                <source src="{{trackStreaming}}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </li>
+    </ul>
+
+</div>
