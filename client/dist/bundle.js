@@ -55125,9 +55125,10 @@
 
 	    function meCtrl($scope, statusService, Settings, meService) {
 
+	        var that = this;
 	        $scope.selectedTab = Settings.defaultTab;
 
-	        function loadMusicExplorerData() {
+	        this.loadMusicExplorerData = function () {
 
 	            statusService.loading = true;
 
@@ -55162,7 +55163,7 @@
 	                $scope.relatedAlbums = undefined;
 	                $scope.allAlbumsList = undefined;
 	            });
-	        }
+	        };
 
 	        $scope.getAlbumImage = function (arr, resolution) {
 	            var small = _.last(arr).url;
@@ -55186,12 +55187,12 @@
 	            return statusService.qs;
 	        }, function (newVal, oldVal) {
 	            if (JSON.stringify(newVal) !== JSON.stringify(oldVal)) {
-	                loadMusicExplorerData();
+	                that.loadMusicExplorerData();
 	            };
 	        }, true);
 
 	        //initial load
-	        loadMusicExplorerData();
+	        that.loadMusicExplorerData();
 	    }
 
 	    app.controller('meCtrl', meCtrl);

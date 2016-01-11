@@ -9,9 +9,10 @@ module.exports = function(app) {
 
     function meCtrl($scope, statusService, Settings, meService) {
 
+        var that = this;
         $scope.selectedTab = Settings.defaultTab;
 
-        function loadMusicExplorerData() {
+        this.loadMusicExplorerData = function() {
 
             statusService.loading = true;
 
@@ -76,13 +77,13 @@ module.exports = function(app) {
             return statusService.qs;
         }, function (newVal, oldVal) {
             if (JSON.stringify(newVal) !== JSON.stringify(oldVal)) {
-                loadMusicExplorerData();
+                that.loadMusicExplorerData();
             };
 
         }, true);
 
         //initial load
-        loadMusicExplorerData();
+        that.loadMusicExplorerData();
 
     }
 
