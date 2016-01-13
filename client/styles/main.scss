@@ -1,0 +1,125 @@
+$main-colour: #0C8C3E; //green
+$secondary-colour: #DADADA; //grey
+$tertiary-colour: black;
+
+$bg-colour: #F6F6F6; //light grey
+$darker-grey: #c3c3c3; // darker grey
+$really-dark-grey: #4C4C4C; // really dark grey
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: $main-colour;
+}
+
+.app {
+
+    h1 {
+        text-align: right;
+    }
+
+    padding: 20px;
+    background: $bg-colour;
+
+    .search_container {
+
+        h3 {
+            margin: 0px;
+        }
+
+        input {
+            width: 100%;
+            font-size: 20px;
+            height: 30px;
+            border: 1px solid $secondary-colour;
+        }
+
+        .search_result {
+            list-style-type: none;
+            position: absolute;
+            background-color: white;
+            width: 50%;
+            min-height: 200px;
+            margin-top: 0px;
+            padding: 0;
+            border: 1px dotted black;
+
+            li {
+                padding: 7px;
+            }
+
+        }
+
+    }
+
+    .tabs_container {
+
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        margin-top: 3px;
+
+        li {
+            display: inline-block;
+            text-align: center;
+            padding: 14px 16px;
+            background-color: $darker-grey;
+            border: 0px;
+
+            a {
+                text-decoration: none;
+                color: $main-colour;
+            }
+        }
+
+
+
+    }
+
+    .tabs_content {
+
+        width: 100%;
+
+        h3 {
+          text-align: center;
+        }
+
+        ul {
+
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        > ul > li {
+            list-style-type: none;
+            margin: 5px;
+            border: 0px solid red;
+            width: 29%;
+            display: inline-block;
+            padding: 20px;
+            vertical-align: text-top;
+            min-height: 200px;
+            background-color: white;
+
+        }
+
+        &.cover_art {
+            text-align: center;
+
+            > ul > li {
+
+                display: list-item;
+                width: 95%;
+
+            }
+        }
+
+        &.albums {
+            text-align: center;
+        }
+
+    }
+
+}
+

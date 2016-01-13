@@ -2,18 +2,18 @@
 
     <h1>Music Explorer</h1>
 
-    <div>
+    <div class="search_container">
         <h3>Search: </h3>
         <search></search>
     </div>
 
-    <ul>
+    <ul class="tabs_container">
         <li><a href="javascript:void(0);" ng-click="activeTab('top-tracks');">Top Tracks</a></li>
         <li><a href="javascript:void(0);" ng-click="activeTab('cover-art');">Top Track's Cover Art</a></li>
         <li><a href="javascript:void(0);" ng-click="activeTab('all-albums');">All Albums</a></li>
     </ul>
 
-    <div ng-if="selectedTab === 'top-tracks' && !isLoading()">
+    <div class="tabs_content" ng-if="selectedTab === 'top-tracks' && !isLoading()">
 
         <h3>{{artistName}}'s Top Tracks</h3>
         <ul>
@@ -31,7 +31,7 @@
 
     </div>
 
-    <div ng-if="selectedTab === 'cover-art' && !isLoading()">
+    <div class="tabs_content cover_art" ng-if="selectedTab === 'cover-art' && !isLoading()">
         <h3>Top Tracks Albums's Cover Art</h3>
         <ul>
             <li ng-repeat="album in relatedAlbums track by $index">
@@ -41,7 +41,7 @@
         <span ng-if="relatedAlbums.length===0">No data</span>
     </div>
 
-    <div ng-if="selectedTab === 'all-albums' && !isLoading()">
+    <div class="tabs_content albums" ng-if="selectedTab === 'all-albums' && !isLoading()">
         <h3>All Albums</h3>
         <ul>
             <li ng-repeat="item in allAlbumsList track by $index">

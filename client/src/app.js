@@ -3,6 +3,8 @@ import ngSanitize from 'angular-sanitize';
 import _ from 'lodash';
 import moment from 'expose?moment!moment';
 
+import '../styles/main.scss';
+
 import docReady from "./utils/docReady";
 
 import settings from './app.settings';

@@ -9,6 +9,15 @@ var server = app.listen(9000, function() {
     console.log('Listening on port %d', server.address().port);
 });
 
+app.all('*', function(req, res, next) {
+    res.set('Access-Control-Allow-Origin', '*');
+    //res.set('Access-Control-Allow-Credentials', true);
+    res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
+    res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Authorization');
+    if ('OPTIONS' == req.method) return res.send(200);
+    next();
+});
+
 // Error Handling
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
