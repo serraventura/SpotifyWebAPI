@@ -2,6 +2,7 @@
 Technologies/Tools: Angularjs, nodejs, express, webpack, SASS, babel, es6(just a bit), karma, mocha.
 
 ### How to run app
+just in case run with sudo
 ```
 sh start.sh
 ```
