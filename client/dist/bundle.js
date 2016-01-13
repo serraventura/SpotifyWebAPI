@@ -62,31 +62,33 @@
 
 	var _exposeMomentMoment2 = _interopRequireDefault(_exposeMomentMoment);
 
-	var _docReady = __webpack_require__(106);
+	__webpack_require__(106);
+
+	var _docReady = __webpack_require__(110);
 
 	var _docReady2 = _interopRequireDefault(_docReady);
 
-	var _app = __webpack_require__(107);
+	var _app = __webpack_require__(111);
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _status = __webpack_require__(108);
+	var _status = __webpack_require__(112);
 
 	var _status2 = _interopRequireDefault(_status);
 
-	var _musicexplorer = __webpack_require__(109);
+	var _musicexplorer = __webpack_require__(113);
 
 	var _musicexplorer2 = _interopRequireDefault(_musicexplorer);
 
-	var _songplayer = __webpack_require__(114);
+	var _songplayer = __webpack_require__(118);
 
 	var _songplayer2 = _interopRequireDefault(_songplayer);
 
-	var _search = __webpack_require__(116);
+	var _search = __webpack_require__(120);
 
 	var _search2 = _interopRequireDefault(_search);
 
-	var _filters = __webpack_require__(120);
+	var _filters = __webpack_require__(124);
 
 	var _filters2 = _interopRequireDefault(_filters);
 
@@ -55019,6 +55021,356 @@
 
 /***/ },
 /* 106 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(107);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(109)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./main.scss", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./main.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 107 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(108)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "body {\n  font-family: 'Arial', sans-serif;\n  background-color: #0C8C3E; }\n\n.app {\n  padding: 20px;\n  background: #F6F6F6; }\n  .app h1 {\n    text-align: right; }\n  .app .search_container h3 {\n    margin: 0px; }\n  .app .search_container input {\n    width: 100%;\n    font-size: 20px;\n    height: 30px;\n    border: 1px solid #DADADA; }\n  .app .search_container .search_result {\n    list-style-type: none;\n    position: absolute;\n    background-color: white;\n    width: 50%;\n    min-height: 200px;\n    margin-top: 0px;\n    padding: 0;\n    border: 1px dotted black; }\n    .app .search_container .search_result li {\n      padding: 7px; }\n  .app .tabs_container {\n    list-style-type: none;\n    margin: 0;\n    padding: 0;\n    margin-top: 3px; }\n    .app .tabs_container li {\n      display: inline-block;\n      text-align: center;\n      padding: 14px 16px;\n      background-color: #c3c3c3;\n      border: 0px; }\n      .app .tabs_container li a {\n        text-decoration: none;\n        color: #0C8C3E; }\n  .app .tabs_content {\n    width: 100%; }\n    .app .tabs_content h3 {\n      text-align: center; }\n    .app .tabs_content ul {\n      list-style-type: none;\n      margin: 0;\n      padding: 0;\n      width: 100%; }\n    .app .tabs_content > ul > li {\n      list-style-type: none;\n      margin: 5px;\n      border: 0px solid red;\n      width: 29%;\n      display: inline-block;\n      padding: 20px;\n      vertical-align: text-top;\n      min-height: 200px;\n      background-color: white; }\n    .app .tabs_content.cover_art {\n      text-align: center; }\n      .app .tabs_content.cover_art > ul > li {\n        display: list-item;\n        width: 95%; }\n    .app .tabs_content.albums {\n      text-align: center; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 108 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 109 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		var blob = new Blob([css], { type: "text/css" });
+
+		var oldSrc = linkElement.href;
+
+		linkElement.href = URL.createObjectURL(blob);
+
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ },
+/* 110 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -55045,7 +55397,7 @@
 	}
 
 /***/ },
-/* 107 */
+/* 111 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -55060,7 +55412,7 @@
 	};
 
 /***/ },
-/* 108 */
+/* 112 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -55087,20 +55439,20 @@
 	};
 
 /***/ },
-/* 109 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _me = __webpack_require__(110);
+	var _me = __webpack_require__(114);
 
 	var _me2 = _interopRequireDefault(_me);
 
-	var _me3 = __webpack_require__(111);
+	var _me3 = __webpack_require__(115);
 
 	var _me4 = _interopRequireDefault(_me3);
 
-	var _me5 = __webpack_require__(112);
+	var _me5 = __webpack_require__(116);
 
 	var _me6 = _interopRequireDefault(_me5);
 
@@ -55114,7 +55466,7 @@
 	};
 
 /***/ },
-/* 110 */
+/* 114 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -55199,7 +55551,7 @@
 	};
 
 /***/ },
-/* 111 */
+/* 115 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -55237,12 +55589,12 @@
 	};
 
 /***/ },
-/* 112 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _me = __webpack_require__(113);
+	var _me = __webpack_require__(117);
 
 	var _me2 = _interopRequireDefault(_me);
 
@@ -55267,18 +55619,18 @@
 	};
 
 /***/ },
-/* 113 */
+/* 117 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\n\n    <h1>Music Explorer</h1>\n\n    <div>\n        <h3>Search: </h3>\n        <search></search>\n    </div>\n\n    <ul>\n        <li><a href=\"javascript:void(0);\" ng-click=\"activeTab('top-tracks');\">Top Tracks</a></li>\n        <li><a href=\"javascript:void(0);\" ng-click=\"activeTab('cover-art');\">Top Track's Cover Art</a></li>\n        <li><a href=\"javascript:void(0);\" ng-click=\"activeTab('all-albums');\">All Albums</a></li>\n    </ul>\n\n    <div ng-if=\"selectedTab === 'top-tracks' && !isLoading()\">\n\n        <h3>{{artistName}}'s Top Tracks</h3>\n        <ul>\n            <li ng-repeat=\"track in topTracksList track by $index\">\n                <song-player\n                    track-name=\"{{track.name}}\"\n                    track-streaming=\"{{track.preview_url}}\"\n                    track-duration=\"{{track.duration_ms}}\"\n                    album-name=\"{{track.album.name}}\"\n                    album-image=\"{{getAlbumImage(track.album.images)}}\"\n                ></song-player>\n            </li>\n        </ul>\n        <span ng-if=\"topTracksList.length===0\">No data</span>\n\n    </div>\n\n    <div ng-if=\"selectedTab === 'cover-art' && !isLoading()\">\n        <h3>Top Tracks Albums's Cover Art</h3>\n        <ul>\n            <li ng-repeat=\"album in relatedAlbums track by $index\">\n                <img ng-src=\"{{getAlbumImage(album.images, 640)}}\" />\n            </li>\n        </ul>\n        <span ng-if=\"relatedAlbums.length===0\">No data</span>\n    </div>\n\n    <div ng-if=\"selectedTab === 'all-albums' && !isLoading()\">\n        <h3>All Albums</h3>\n        <ul>\n            <li ng-repeat=\"item in allAlbumsList track by $index\">\n                <img ng-src=\"{{getAlbumImage(item.images, 300)}}\" />\n            </li>\n        </ul>\n        <span ng-if=\"allAlbumsList.length===0\">No data</span>\n    </div>\n\n    <div ng-show=\"isLoading()\">Loading...</div>\n\n</div>\n";
+	module.exports = "<div>\n\n    <h1>Music Explorer</h1>\n\n    <div class=\"search_container\">\n        <h3>Search: </h3>\n        <search></search>\n    </div>\n\n    <ul class=\"tabs_container\">\n        <li><a href=\"javascript:void(0);\" ng-click=\"activeTab('top-tracks');\">Top Tracks</a></li>\n        <li><a href=\"javascript:void(0);\" ng-click=\"activeTab('cover-art');\">Top Track's Cover Art</a></li>\n        <li><a href=\"javascript:void(0);\" ng-click=\"activeTab('all-albums');\">All Albums</a></li>\n    </ul>\n\n    <div class=\"tabs_content\" ng-if=\"selectedTab === 'top-tracks' && !isLoading()\">\n\n        <h3>{{artistName}}'s Top Tracks</h3>\n        <ul>\n            <li ng-repeat=\"track in topTracksList track by $index\">\n                <song-player\n                    track-name=\"{{track.name}}\"\n                    track-streaming=\"{{track.preview_url}}\"\n                    track-duration=\"{{track.duration_ms}}\"\n                    album-name=\"{{track.album.name}}\"\n                    album-image=\"{{getAlbumImage(track.album.images)}}\"\n                ></song-player>\n            </li>\n        </ul>\n        <span ng-if=\"topTracksList.length===0\">No data</span>\n\n    </div>\n\n    <div class=\"tabs_content cover_art\" ng-if=\"selectedTab === 'cover-art' && !isLoading()\">\n        <h3>Top Tracks Albums's Cover Art</h3>\n        <ul>\n            <li ng-repeat=\"album in relatedAlbums track by $index\">\n                <img ng-src=\"{{getAlbumImage(album.images, 640)}}\" />\n            </li>\n        </ul>\n        <span ng-if=\"relatedAlbums.length===0\">No data</span>\n    </div>\n\n    <div class=\"tabs_content albums\" ng-if=\"selectedTab === 'all-albums' && !isLoading()\">\n        <h3>All Albums</h3>\n        <ul>\n            <li ng-repeat=\"item in allAlbumsList track by $index\">\n                <img ng-src=\"{{getAlbumImage(item.images, 300)}}\" />\n            </li>\n        </ul>\n        <span ng-if=\"allAlbumsList.length===0\">No data</span>\n    </div>\n\n    <div ng-show=\"isLoading()\">Loading...</div>\n\n</div>\n";
 
 /***/ },
-/* 114 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _sp = __webpack_require__(115);
+	var _sp = __webpack_require__(119);
 
 	var _sp2 = _interopRequireDefault(_sp);
 
@@ -55319,22 +55671,22 @@
 	};
 
 /***/ },
-/* 115 */
+/* 119 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>\n\n    <ul>\n        <li>{{trackName}}</li>\n        <li>Duration: {{trackDuration | humanizeTime}}</li>\n        <li>{{albumName}}</li>\n        <li><img ng-src=\"{{albumImage}}\" /></li>\n        <li>\n            <audio controls>\n                <source ng-src=\"{{trustAsResourceUrl(trackStreaming)}}\" type=\"audio/mpeg\">\n                Your browser does not support the audio element.\n            </audio>\n        </li>\n    </ul>\n\n</div>\n";
 
 /***/ },
-/* 116 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _search = __webpack_require__(117);
+	var _search = __webpack_require__(121);
 
 	var _search2 = _interopRequireDefault(_search);
 
-	var _search3 = __webpack_require__(118);
+	var _search3 = __webpack_require__(122);
 
 	var _search4 = _interopRequireDefault(_search3);
 
@@ -55347,7 +55699,7 @@
 	};
 
 /***/ },
-/* 117 */
+/* 121 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -55384,12 +55736,12 @@
 	};
 
 /***/ },
-/* 118 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _search = __webpack_require__(119);
+	var _search = __webpack_require__(123);
 
 	var _search2 = _interopRequireDefault(_search);
 
@@ -55439,13 +55791,13 @@
 	};
 
 /***/ },
-/* 119 */
+/* 123 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\n\n    <input type=\"search\" ng-keyup=\"triggerSearch($event);\" ng-model=\"searchTerm\"/>\n    <ul ng-repeat=\"item in searchResult | limitTo: 5 track by $index\">\n        <li><a href=\"javascript:void(0);\" ng-click=\"triggerArtist(item.id)\">{{item.name}}</a></li>\n    </ul>\n\n</div>\n";
+	module.exports = "<div>\n\n    <input type=\"search\" ng-keyup=\"triggerSearch($event);\" ng-model=\"searchTerm\"/>\n    <ul class=\"search_result\" ng-show=\"searchResult\">\n        <li ng-repeat=\"item in searchResult | limitTo: 5 track by $index\"><a href=\"javascript:void(0);\" ng-click=\"triggerArtist(item.id)\">{{item.name}}</a></li>\n    </ul>\n\n</div>\n";
 
 /***/ },
-/* 120 */
+/* 124 */
 /***/ function(module, exports) {
 
 	'use strict';
