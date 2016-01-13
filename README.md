@@ -1,4 +1,5 @@
 # SpotifyWebAPI
+Technologies/Tools: Angularjs, nodejs, express, webpack, SASS, babel, es6(just a bit), karma, mocha.
 
 ### How to run app
 ```
@@ -10,7 +11,13 @@ sh start.sh
 sh test.sh
 ```
 
-### Refactoring
+### Functionalities
+- Search by artist
+- Top tracks
+- Related albums
+- Full album list
+
+### Refactoring (Challenge 2)
 
 **Old Code**
 
