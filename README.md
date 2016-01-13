@@ -1,5 +1,15 @@
 # SpotifyWebAPI
 
+### How to run app
+```
+sh start.sh
+```
+
+### How to test app
+```
+sh test.sh
+```
+
 ### Refactoring
 
 **Old Code**
